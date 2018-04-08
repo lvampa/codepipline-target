@@ -12,7 +12,8 @@ phases:
       - echo Build started on `date`
   post_build:
     commands:
-      - echo Build completed on `date`
+      - aws s3 cp --recursive --acl public-read ./html s3://connors.test.bucket/
 artifacts:
+  type: zip
   files:
     - "**/*"
